@@ -1,4 +1,5 @@
 import Gallery from '../components/Gallery';
+import TopBar from '../components/TopBar';
 import {
   profile,
   stats,
@@ -23,33 +24,6 @@ function Backdrop() {
       </div>
       <div className="plate-shade" aria-hidden />
     </>
-  );
-}
-
-function Nav() {
-  return (
-    <header className="fixed inset-x-0 top-0 z-50">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-        <a href="#top" className="glass flex items-center gap-3 !rounded-2xl px-3 py-2">
-          <span className="btn-gold flex h-9 w-9 items-center justify-center !rounded-xl font-display text-sm font-bold">
-            SA
-          </span>
-          <span className="leading-tight">
-            <span className="block font-display text-[15px] font-semibold text-white">Saim Asif</span>
-            <span className="block text-[9px] font-bold tracking-[0.28em] text-gold">FULL STACK · TEAM LEAD</span>
-          </span>
-        </a>
-        <nav className="glass hidden items-center gap-1 !rounded-2xl px-2 py-2 text-sm text-muted md:flex">
-          <a href="#work" className="rounded-lg px-3 py-1.5 hover:bg-white/5 hover:text-white">Work</a>
-          <a href="#experience" className="rounded-lg px-3 py-1.5 hover:bg-white/5 hover:text-white">Experience</a>
-          <a href="#projects" className="rounded-lg px-3 py-1.5 hover:bg-white/5 hover:text-white">Projects</a>
-          <a href="#skills" className="rounded-lg px-3 py-1.5 hover:bg-white/5 hover:text-white">Skills</a>
-          <a href="#contact" className="rounded-lg px-3 py-1.5 hover:bg-white/5 hover:text-white">Contact</a>
-          <a href={profile.resume} className="btn-gold ml-2 px-4 py-2 text-sm">Résumé</a>
-        </nav>
-        <a href={profile.resume} className="btn-gold px-4 py-2 text-sm md:hidden">Résumé</a>
-      </div>
-    </header>
   );
 }
 
@@ -333,7 +307,7 @@ export default function Home() {
   return (
     <main className="relative">
       <Backdrop />
-      <Nav />
+      <TopBar />
       <Hero />
       <FeaturedWork />
       <Experience />
