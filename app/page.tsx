@@ -1,5 +1,6 @@
 import Gallery from '../components/Gallery';
 import TopBar from '../components/TopBar';
+import BackdropFX from '../components/BackdropFX';
 import {
   profile,
   stats,
@@ -14,18 +15,6 @@ import {
 } from '../data/content';
 
 const PHONE_PROJECTS = new Set(['Seated', 'Connectavo', 'Harvest Yard']);
-
-function Backdrop() {
-  return (
-    <>
-      <div className="plate-wrap" aria-hidden>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/showroom-plate.webp" alt="" className="plate-img" />
-      </div>
-      <div className="plate-shade" aria-hidden />
-    </>
-  );
-}
 
 function Hero() {
   return (
@@ -141,10 +130,13 @@ function FeaturedWork() {
           ))}
         </ul>
         <div className="mt-7">
+          <Gallery images={cmh.images} />
+        </div>
+        <div className="mt-7">
           <MetricRow metrics={cmh.metrics} />
         </div>
         <p className="mt-5 text-xs text-faint">
-          The platform itself is login-gated for patient-data protection — it runs live at{' '}
+          Screenshots from the live platform (my own test organization — no client data). The platform itself is login-gated for patient-data protection — it runs live at{' '}
           <a href={cmh.live} target="_blank" rel="noreferrer" className="text-gold underline">app.casemanagementhub.org</a>
         </p>
       </div>
@@ -306,7 +298,7 @@ function Contact() {
 export default function Home() {
   return (
     <main className="relative">
-      <Backdrop />
+      <BackdropFX />
       <TopBar />
       <Hero />
       <FeaturedWork />

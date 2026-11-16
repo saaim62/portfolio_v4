@@ -70,6 +70,12 @@ export const cmh = {
     { value: '10,000+', label: 'authenticated sessions a day' },
     { value: '10,000+', label: 'document uploads a month, encrypted' },
   ],
+  images: [
+    { src: '/images/cmh/dashboard.webp', alt: 'Case Management Hub main dashboard — quick actions, notes, sent-form status' },
+    { src: '/images/cmh/form-builder.webp', alt: 'Case Management Hub drag-and-drop form builder' },
+    { src: '/images/cmh/calendar.webp', alt: 'Case Management Hub appointments calendar, week view' },
+    { src: '/images/cmh/messaging.webp', alt: 'Case Management Hub secure messaging' },
+  ],
   live: 'https://app.casemanagementhub.org/',
   liveLabel: 'View the live platform',
 };
