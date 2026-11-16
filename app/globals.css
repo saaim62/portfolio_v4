@@ -1,28 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg-primary: #050507;
-  --color-bg-secondary: #0a0a0f;
-  --color-bg-tertiary: #111116;
-  --color-bg-elevated: #1a1a24;
-  
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #a1a1aa;
-  --color-text-muted: #71717a;
-  
-  --color-border-subtle: rgba(255, 255, 255, 0.06);
-  --color-border-focus: rgba(99, 102, 241, 0.4);
-  
-  --color-accent-primary: #6366f1; 
-  --color-accent-secondary: #a855f7; 
-  
-  --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-heading: var(--font-outfit), system-ui, sans-serif;
-}
+  --color-ink: #060607;
+  --color-panel: rgba(13, 13, 16, 0.72);
+  --color-panel-solid: #0c0c0f;
+  --color-line: rgba(255, 255, 255, 0.09);
+  --color-gold: #f2b33d;
+  --color-gold-bright: #ffd968;
+  --color-gold-deep: #c07f10;
+  --color-cream: #f5f1e6;
+  --color-muted: #a7a7b3;
+  --color-faint: #6d6d78;
+  --color-cyanx: #2dd4ee;
+  --color-mint: #34d399;
 
-:root {
-  --shadow-glow: 0 0 40px -10px rgba(99, 102, 241, 0.3);
-  --gradient-primary: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary));
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-poppins), var(--font-inter), system-ui, sans-serif;
 }
 
 html {
@@ -30,56 +23,138 @@ html {
 }
 
 body {
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
+  background: #060607;
+  color: var(--color-cream);
   font-family: var(--font-sans);
-  position: relative;
+  overflow-x: hidden;
 }
 
-/* Headings use Outfit */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
+::selection {
+  background: rgba(242, 179, 61, 0.35);
+  color: #fff;
 }
 
-/* Noise Texture Overlay */
-body::before {
-  content: "";
+/* ---- DropRoute showroom backdrop ---- */
+.plate-wrap {
   position: fixed;
   inset: 0;
-  z-index: 50;
-  pointer-events: none;
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  z-index: -2;
+  overflow: hidden;
+  background: #060607;
+}
+.plate-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+  animation: plate-zoom 46s ease-in-out infinite alternate;
+}
+@keyframes plate-zoom {
+  from { transform: scale(1) translateY(0); }
+  to { transform: scale(1.12) translateY(-1.5%); }
+}
+.plate-shade {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(1100px 520px at 50% -8%, rgba(242, 179, 61, 0.10), transparent 60%),
+    linear-gradient(180deg, rgba(6, 6, 7, 0.55) 0%, rgba(6, 6, 7, 0.78) 34%, rgba(6, 6, 7, 0.92) 100%);
 }
 
-/* Glassmorphism Utilities */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: 1.5rem;
+/* ---- Glass panel (DropRoute UI) ---- */
+.glass {
+  background: var(--color-panel);
+  border: 1px solid var(--color-line);
+  border-radius: 1.6rem;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.glass-soft {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 1.1rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
-/* Text Gradients */
-.text-gradient {
-  background: var(--gradient-primary);
+/* ---- Gold ---- */
+.gold-text {
+  background: linear-gradient(120deg, #ffe9a8 0%, #f2b33d 45%, #d99a16 70%, #ffdf8e 100%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  color: transparent;
+}
+.btn-gold {
+  background: linear-gradient(160deg, #ffd968 0%, #f0ad22 55%, #cf8d0e 100%);
+  color: #191204;
+  font-weight: 700;
+  border-radius: 0.9rem;
+  box-shadow: 0 10px 30px rgba(240, 173, 34, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn-gold:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 36px rgba(240, 173, 34, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+.btn-ghost {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 0.9rem;
+  font-weight: 600;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.btn-ghost:hover {
+  border-color: rgba(242, 179, 61, 0.55);
+  background: rgba(242, 179, 61, 0.07);
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
+.chip {
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  padding: 0.28rem 0.7rem;
+  color: var(--color-muted);
+  white-space: nowrap;
 }
-::-webkit-scrollbar-track {
-  background: var(--color-bg-primary);
+.chip-gold {
+  border-color: rgba(242, 179, 61, 0.45);
+  color: var(--color-gold-bright);
+  background: rgba(242, 179, 61, 0.08);
 }
-::-webkit-scrollbar-thumb {
-  background: var(--color-bg-elevated);
-  border-radius: 5px;
+
+.eyebrow {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-cyanx);
 }
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent-primary);
+
+.thumb {
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 0.8rem;
+  overflow: hidden;
+  opacity: 0.55;
+  transition: opacity 0.15s ease, border-color 0.15s ease;
+  cursor: pointer;
+  padding: 0;
+  background: none;
 }
+.thumb:hover { opacity: 0.85; }
+.thumb-active {
+  opacity: 1;
+  border-color: rgba(242, 179, 61, 0.8);
+  box-shadow: 0 0 0 1px rgba(242, 179, 61, 0.5);
+}
+
+.shot {
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 1.1rem;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
+}
+
+a { text-underline-offset: 3px; }

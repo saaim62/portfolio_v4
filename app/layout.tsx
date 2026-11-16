@@ -1,21 +1,23 @@
 import './globals.css';
-import { Inter, Outfit } from 'next/font/google';
+import { Inter, Poppins } from 'next/font/google';
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
 });
 
-const outfit = Outfit({ 
+const poppins = Poppins({
   subsets: ['latin'],
-  variable: '--font-outfit',
+  weight: ['500', '600', '700', '800'],
+  variable: '--font-poppins',
   display: 'swap',
 });
 
 export const metadata = {
-  title: 'Saim Asif | Full Stack AI Engineer',
-  description: 'Portfolio of Saim Asif - Architecting God-Tier AI Systems',
+  title: 'Saim Asif — Senior Full Stack Engineer & Technical Team Lead',
+  description:
+    'Senior Full Stack Engineer and Technical Team Lead in Lahore, Pakistan. Led three engineers to build Case Management Hub, a HIPAA-compliant healthcare SaaS used by 70+ paying organizations. Founder of DropRoute. React, Next.js, NestJS, React Native, Native Android, AWS.',
 };
 
 export default function RootLayout({
@@ -24,8 +26,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark scroll-smooth">
-      <body className={`${inter.variable} ${outfit.variable} font-sans bg-[#050507] text-white antialiased selection:bg-indigo-500/30 selection:text-white overflow-x-hidden`}>
+    <html lang="en" className="dark">
+      <body className={`${inter.variable} ${poppins.variable} font-sans antialiased`}>
         {children}
       </body>
     </html>
